@@ -1,5 +1,5 @@
 # User uploaded files #
-static/user_images/*
+static/user_images/*.jpg
 
 # MacOS preferences #
 *.DS_Store

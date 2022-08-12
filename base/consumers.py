@@ -9,8 +9,11 @@ class RoomConsumer(WebsocketConsumer):
     def connect(self):
 
         self.user = self.scope["user"]
-        self.user.connections_count += 1
-        self.user.save()
+
+        if self.user.is_authenticated:
+            self.user.connections_count += 1
+            self.user.save()
+
         self.room_id = self.scope["url_route"]["kwargs"]["pk"]
         self.room = Room.objects.get(id=self.room_id)
 
@@ -26,9 +29,9 @@ class RoomConsumer(WebsocketConsumer):
         self.send_data()
 
     def disconnect(self, close_code):
-        self.user.connections_count -= 1
-        self.user.save()
-        # Called when the socket closes
+        if self.user.is_authenticated:
+            self.user.connections_count -= 1
+            self.user.save()
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
