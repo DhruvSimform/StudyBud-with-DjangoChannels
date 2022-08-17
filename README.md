@@ -15,7 +15,7 @@ This project is forked from [StudyBud](https://github.com/divanov11/StudyBud) to
 
 ### Cloning the repository
 
---> Install Redis, if not already installed
+--> Install Redis, if not already installed :
 ```bash
 brew install redis
 brew services start redis
