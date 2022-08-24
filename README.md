@@ -8,8 +8,8 @@ This project is forked from [StudyBud](https://github.com/divanov11/StudyBud) to
 
 ## Improvements
 
-* Rooms are being asynchronously updating with WebSockets, Django Channels and Redis
-* Added Like Unlike Functionality for Room Messages
+* Implemented asynchronously updating Rooms with WebSockets, Django Channels and Redis
+* Added Like/Unlike Functionality for Room Messages
 * Implemented Online/Offline status for Users
 * Further minor changes
 
