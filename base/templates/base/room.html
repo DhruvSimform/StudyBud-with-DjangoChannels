@@ -134,7 +134,7 @@
         let room_id = {{ room.id }}
 
             let
-        url = `ws://${window.location.host}/ws/socket-server/rooms/${room_id}/`
+        url = `wss://${window.location.host}/ws/socket-server/rooms/${room_id}/`
 
         var roomSocket;
 
@@ -227,7 +227,9 @@
             ${delete_but}
         </div>
         <div class="thread__details">
+        <code>
             ${msg.body}
+            </code>
         </div>
     </div>`)
 
@@ -254,7 +256,7 @@
             e.preventDefault()
             let message = e.target.message.value
             roomSocket.send(JSON.stringify({
-                'message': message
+                'message': `${message}`
             }))
             form.reset()
         })

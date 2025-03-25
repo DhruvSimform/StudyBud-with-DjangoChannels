@@ -3,8 +3,8 @@ from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 from .models import Room, Message
 from .serializers import UserSerializer, MessageSerializer
-
-
+from bs4 import BeautifulSoup
+import html
 class RoomConsumer(WebsocketConsumer):
     def connect(self):
 
@@ -58,6 +58,9 @@ class RoomConsumer(WebsocketConsumer):
 
         if 'message' in text_data_json:
             message = text_data_json['message']
+            # message = BeautifulSoup(message,"html.parser").get_text()
+            message = html.escape(message)
+            print(message)
             self.create_new_message(message)
 
         self.send_data()
